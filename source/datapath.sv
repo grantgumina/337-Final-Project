@@ -9,11 +9,11 @@
 
 module datapath
 	(
-		input [6,0] address_one,
-		input [6,0] address_two,
-		input [31,0] data_in,
-		input [1,0] op_code,
-		output [31,0] data_out
+		input [6:0] address_one,
+		input [6:0] address_two,
+		input [31:0] data_in,
+		input [1:0] op_code,
+		output [31:0] data_out
 	);
 
 endmodule
