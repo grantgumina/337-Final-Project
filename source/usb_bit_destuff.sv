@@ -20,7 +20,7 @@ module usb_bit_destuff
 reg[6:0] data;
 assign strobe = clk_trans && (data != 7'b0111111);
 
-always @(posedge clk or negedge rst_n) begin
+always @ (posedge clk, negedge rst_n) begin
     if (!rst_n) begin
         data <= 7'b0000000;
     end else if (clk_trans) begin

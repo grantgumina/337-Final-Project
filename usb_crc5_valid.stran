@@ -7,11 +7,11 @@
 # //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
 # //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
 # //
-# vsim +no_glitch_msg -L /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work -L /home/ecegrid/a/ece337/Class0.5u/GOLD_LIB -Lf /home/ecegrid/a/ece337/Class0.5u/ECE337_IP/vsim -coverage -i -t ps source_work/.tb_usb_crc5 
+# vsim +no_glitch_msg -L /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work -L /home/ecegrid/a/ece337/Class0.5u/GOLD_LIB -Lf /home/ecegrid/a/ece337/Class0.5u/ECE337_IP/vsim -coverage -i -t ps source_work/.tb_usb_crc5_valid 
 # ** Note: (vsim-3812) Design is being optimized...
 # Loading sv_std.std
-# Loading work.tb_usb_crc5(fast)
+# Loading work.tb_usb_crc5_valid(fast)
 add wave *
 run 200 ns
-# ** Error: FAIL CRC5_VALID = 1   CRC5 =  6
-#    Time: 100 ns  Scope: tb_usb_crc5 File: source/tb_usb_crc5.sv Line: 67
+# ** Info: PASS CRC5_VALID = 1
+#    Time: 100 ns  Scope: tb_usb_crc5_valid File: source/tb_usb_crc5_valid.sv Line: 62

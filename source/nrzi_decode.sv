@@ -19,7 +19,7 @@ module nrzi_decode
 reg prev_i;
 assign o = (prev_i == i);
 
-always @(posedge clk) begin
+always @ (posedge clk) begin
     if (clk_trans) begin
         prev_i <= i;
     end
