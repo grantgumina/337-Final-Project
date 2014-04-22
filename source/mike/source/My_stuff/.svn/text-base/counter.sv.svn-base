@@ -1,0 +1,55 @@
+// $Id: $
+// File name:   counter.sv
+// Created:     4/16/2013
+// Author:      Michael Welling
+// Lab Section: 337-03
+// Version:     1.0  Initial Design Entry
+// Description: Counter for USB R/W
+
+module counter (
+  input wire clk,
+  input wire n_reset,
+  input wire shift_enable,
+  input wire data,
+  output wire valid_data
+  );
+
+  reg [3:0] count;
+  reg [2:0] one_count;
+  reg [2:0] nxt_one_count;
+  reg [3:0] nxt_count;
+//  reg flag;
+
+  always @ (posedge clk, negedge n_reset)
+  begin : CNT_REG
+    if(n_reset == 1'b0)
+     count <= 4'b0000;     //set count to 0
+     one_count <= 4'b0000;
+   else
+     count <= nxt_count; //set count to next count
+     one_count <= nxt_one_count;
+  end
+
+  always @ (count, one_count, shift_enable)
+  begin : NXT_LOGIC
+    nxt_count = count;
+    nxt_one_count = one_count;
+    if(shift_enable == 1'b1)
+      nxt_count = count + 1; //increment the counter
+    if(data == 1'd1)
+      nxt_one_count = one_count + 1;  
+    if(one_count >= 2'd6)
+      valid_data = 0
+  end
+
+  always @ (count)
+  begin : OUT_LOGIC
+    flag = 1'b0;
+
+    if(10'b1111101000 == count)
+      flag = 1'b1;  //use a flag since one_k_samples is a wire
+  end
+
+  assign one_k_samples = flag;
+
+endmodule

@@ -1,0 +1,151 @@
+// $Id: $
+// File name:   packet_detect.sv
+// Created:     4/16/2013
+// Author:      Michael Welling
+// Lab Section: 337-03
+// Version:     1.0  Initial Design Entry
+// Description: USB packet start and stop finder
+
+module packet_detect(
+	input wire clk,
+	input wire rst,
+    input wire shift_enable,
+	input wire [1:0] USBdata,
+	output wire read_val
+);
+
+parameter IDLE, EOP1, EOP2, EOP3, EOPFOUND, SYNC1, SYNC2, SYNC3, SYNC4, SYNC5, SYNC6, SYNC7, SYNC8, SYNCFOUND, ERROR;
+
+reg dv;
+reg next_dv;
+reg curr_state;
+reg next_state;
+
+always @ (posedge clk, negedge n_rst) begin : STATE_REG
+	if(1'b0 == n_rst) begin
+		curr_state <= IDLE;
+        dv <= 1'b0;
+	end else begin
+        curr_state <= next_state;
+        dv <= next_dv;
+	end
+end
+
+always @ (curr_state, USBdata, dv, shift_enable) begin
+    next_state = curr_state;
+    next_dv = dv;
+    case(curr_state)
+        IDLE: begin
+            if( dv == 1 && shift_enable == 1) begin
+                next_state = EOP1;
+            end elseif( dv == 0 && shift_enable == 1) begin
+                next_state = SYNC1;
+            end else begin
+                next_state = IDLE;
+        end
+        EOP1: begin
+            if( shift_enable == 1 && USBdata == 2'b00) begin
+                next_state = EOP2;
+            end elseif( shift_enable == 1 && USBdata != 2'b00) begin
+                next_state = ERROR;
+            end else begin
+                next_state = EOP1;
+        end
+        EOP2: begin
+            if( shift_enable == 1 && USBdata == 2'b00) begin
+                next_state = EOP3;
+            end elseif( shift_enable == 1 && USBdata != 2'b00) begin
+                next_state = ERROR;
+            end else begin
+                next_state = EOP2;
+        end
+        EOP3: begin
+            if( shift_enable == 1 && USBdata == 2'b10) begin
+                next_state = EOPFOUND;
+            end elseif( shift_enable == 1 && USBdata != 2'b10) begin
+                next_state = ERROR;
+            end else begin
+                next_state = EOP3;
+        end
+        EOPFOUND: begin
+            next_dv = 0;
+            next_state = IDLE;
+        end
+        SYNC1: begin
+            if( shift_enable == 1 && USBdata == 2'b01) begin
+                next_state = SYNC2;
+            end elseif( shift_enable == 1 && USBdata != 2'b01) begin
+                next_state = IDLE;
+            end else begin
+                next_state = SYNC1;
+        end
+        SYNC2: begin
+            if( shift_enable == 1 && USBdata == 2'b10) begin
+                next_state = SYNC3;
+            end elseif( shift_enable == 1 && USBdata != 2'b10) begin
+                next_state = IDLE;
+            end else begin
+                next_state = SYNC2;
+        end
+        SYNC3: begin
+            if( shift_enable == 1 && USBdata == 2'b01) begin
+                next_state = SYNC4;
+            end elseif( shift_enable == 1 && USBdata != 2'b01) begin
+                next_state = IDLE;
+            end else begin
+                next_state = SYNC3;
+        end
+        SYNC4: begin
+            if( shift_enable == 1 && USBdata == 2'b10) begin
+                next_state = SYNC5;
+            end elseif( shift_enable == 1 && USBdata != 2'b10) begin
+                next_state = IDLE;
+            end else begin
+                next_state = SYNC4;
+        end
+        SYNC5: begin
+            if( shift_enable == 1 && USBdata == 2'b01) begin
+                next_state = SYNC6;
+            end elseif( shift_enable == 1 && USBdata != 2'b01) begin
+                next_state = IDLE;
+            end else begin
+                next_state = SYNC5;
+        end
+        SYNC6: begin
+            if( shift_enable == 1 && USBdata == 2'b10) begin
+                next_state = SYNC7;
+            end elseif( shift_enable == 1 && USBdata != 2'b10) begin
+                next_state = IDLE;
+            end else begin
+                next_state = SYNC6;
+        end
+        SYNC7: begin
+            if( shift_enable == 1 && USBdata == 2'b01) begin
+                next_state = SYNC8;
+            end elseif( shift_enable == 1 && USBdata != 2'b01) begin
+                next_state = IDLE;
+            end else begin
+                next_state = SYNC7;
+        end
+        SYNC8: begin
+            if( shift_enable == 1 && USBdata == 2'b01) begin
+                next_state = SYNCFOUND;
+            end elseif( shift_enable == 1 && USBdata != 2'b01) begin
+                next_state = IDLE;
+            end else begin
+                next_state = SYNC8;
+        end
+        SYNCFOUND: begin
+            next_dv = 1;
+            next_state = IDLE;
+        end
+        ERROR: next_state = IDLE;
+        default: next_state = IDLE;
+    endcase
+end
+
+assign read_val = dv;
+
+endmodule
+	
+		

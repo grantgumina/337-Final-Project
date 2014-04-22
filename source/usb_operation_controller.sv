@@ -6,6 +6,8 @@
 // Version:     1.0  Initial Design Entry
 // Description: USB Operation Controller
 
+`timescale 1ns / 10ps
+
 module usb_operation_controller
 	(
 		input wire output_ready,

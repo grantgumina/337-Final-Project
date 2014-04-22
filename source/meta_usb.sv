@@ -6,6 +6,8 @@
 // Version:     1.0  Initial Design Entry
 // Description: Top level USB block
 
+`timescale 1ns / 10ps
+
 module meta_usb
 	(
 		input wire output_ready,
@@ -18,7 +20,5 @@ module meta_usb
 	wire new_byte;
 	wire [7:0] data_in;
 	wire [7:0] data_out;
-
-
 
 endmodule

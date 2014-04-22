@@ -6,6 +6,8 @@
 // Version:     1.0  Initial Design Entry
 // Description: Average Computational Block
 
+`timescale 1ns / 10ps
+
 module meta_avg
 	(
 		input wire clk,

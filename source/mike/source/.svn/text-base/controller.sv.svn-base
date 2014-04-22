@@ -1,0 +1,106 @@
+// $Id: $
+// File name:   controller.sv
+// Created:     4/16/2013
+// Author:      Michael Welling
+// Lab Section: 337-03
+// Version:     1.0  Initial Design Entry
+// Description: USB Controller Module
+
+module controller(
+	input wire clk,
+	input wire rst,
+	input wire shift_enable,
+    input read_val,
+	input wire data_bit,
+	output wire data,
+    output wire SR_select,
+    output data_shift
+);
+ 
+reg [2:0] one_count;
+reg [2:0] next_one_count;
+reg [3:0] PID_count;
+reg [3:0] next_PID_count;
+reg curr_state;
+reg next_state;
+reg output;
+reg next_output;
+reg shift;
+reg select;
+
+assign SR_select = select;
+assign data_shift = shift;
+
+always @ (posedge clk, negedge n_rst) begin : STATE_REG
+	if(1'b0 == n_rst) begin
+		curr_state <= IDLE;
+        one_count <= 3'd0;
+        PID_count <= 4'd0;
+        output <= 1'b0;
+	end else begin
+        curr_state <= next_state;
+        one_count <= next_one_count;
+        PID_count <= next_PID_count;
+        output <= next_output;
+	end
+end
+
+always @ (curr_state, one_count, shift_enable)begin : NXT_STATE
+    next_state = curr_state;
+    next_one_count = one_count;
+    case(curr_state)
+        shift = 1'b0;
+        IDLE: begin
+            select = 1'b0;
+            if( shift_enable == 1 && read_val == 1 ) begin
+                next_state = S1;
+            end else begin
+                next_state = IDLE;
+            end
+        end
+        S1: begin
+            select = 1'b0;
+            if( shift_enable == 1 && PID_count < 4'd8 ) begin
+                next_state = S1;
+                next_PID_count = PID_count + 1;
+                next_output = data_bit;
+                shift = 1'b1;
+            end elseif( shift_enable == 1 && PID_count == 4'd8 ) begin
+                next_state = S2;
+                next_PID_count == 4'd0;
+                next_output = data_bit;
+                shift = 1'b1;
+            end else begin
+                next_state = S1;
+                next_output = output;
+                shift = 1'b0;
+            end
+        end
+        S2: begin
+            select = 1'b1;
+            if( shift_enable == 1 && read_val == 1 && one_count < 6) begin
+                next_state = S2;
+                next_output = data_bit;
+                next_one_count = data_bit ? one_count + 1 : 2'b0;
+                shift = 1'b1;
+            end elseif( shift_enable == 1 && read_val == 1 && one_count == 6) begin
+                next_state = S2;
+                next_output = output;
+                next_one_count = 2'b0;
+                shift = 1'b0;
+            end elseif( shift_enable == 1 && read_val == 0 ) begin
+                next_state = IDLE;
+                next_output = output;
+                shift = 1'b0;
+            end else begin
+                next_state = S2
+                next_output = output;
+                shift = 1'b0;
+            end
+        end
+        default: next_state = IDLE;
+    endcase
+end
+
+endmodule
+            

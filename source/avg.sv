@@ -6,7 +6,7 @@
 // Version:     1.0  Initial Design Entry
 // Description: Average Computational Block
 
-module meta_avg
+module avg
 	(
 		input wire clk,
 		input wire n_rst,
