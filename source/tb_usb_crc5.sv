@@ -15,18 +15,17 @@ module tb_usb_crc5();
 	reg tb_clk;	// on chip
 	reg tb_clk_trans; // 480 - transceiver
 	reg tb_n_rst;
-	reg [15:0] tb_d;
-	reg tb_crc5_valid;
-	reg [4:0] tb_crc5_result;
+	reg tb_crc_en;
+	reg [7:0] tb_data_in;
+	reg [4:0] tb_crc_out;
 
 	usb_crc5 CRC5
 	(
 		.clk(tb_clk),
-		.clk_trans(tb_clk_trans),
 		.n_rst(tb_n_rst),
-		.d(tb_d),
-		.valid(tb_crc5_valid),
-		.crc5_result(tb_crc5_result)
+		.data_in(tb_data_in),
+		.crc_en(tb_crc_en),
+		.crc_out(tb_crc_out)
 	);
 
 	always begin
@@ -44,30 +43,23 @@ module tb_usb_crc5();
 	end
 
 	initial begin
+		// TEST 1
 		tb_n_rst = 1'b0;
 		#(CLK_PERIOD);
 		#(CLK_PERIOD);
 		tb_n_rst = 1'b1;
 		@(posedge tb_clk);
-		
 
-		// test 1 - should fail
-		tb_d = {4'he, 7'h15};
-		@(posedge tb_clk);
-		@(posedge tb_clk);
-		@(posedge tb_clk);
-		@(posedge tb_clk);
-		@(posedge tb_clk);
-		@(posedge tb_clk);
-		@(posedge tb_clk);
-		@(posedge tb_clk);
-		@(posedge tb_clk);
-		@(posedge tb_clk);
-		
-		if ((tb_crc5_valid == 0) && (tb_crc5_result == 5'b11101)) begin
-			$info("PASS CRC5_VALID = %d   CRC5 = %d", tb_crc5_valid, tb_crc5_result);
+		tb_data_in = 8'b10101010;
+		tb_crc_en = 1'b1;
+
+		#(270);
+		#(CLK_PERIOD / 2);
+
+		if (tb_crc_out == 5'b11110) begin
+			$info("PASSED");
 		end else begin
-			$error("FAIL CRC5_VALID = %d   CRC5 = %d", tb_crc5_valid, tb_crc5_result);
-		end		
+			$error("FAILED");
+		end
 	end
 endmodule

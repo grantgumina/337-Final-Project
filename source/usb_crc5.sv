@@ -8,36 +8,33 @@
 
 `timescale 1ns / 10ps
 
-module usb_crc5 
+module usb_crc5
 	(
-	    input wire n_rst,
-	    input wire clk,
-	    input wire clk_trans,
-	    input wire [15:0] d,
-	    output wire valid,
-	    output wire [4:0] crc5_result
+		input reg n_rst,
+		input reg clk,
+		input reg [7:0] data_in,
+		input reg crc_en,
+		output reg [4:0] crc_out
     );
 
-/*
- * If all token bits are recieved without error 
- * the remainder will be 5'b01100.
- */
-	reg [4:0] crc5_rem = 5'b01100;
-	reg [4:0] crc5_poly = 5'b00101;
-	reg [4:0] crc5 = 5'b11111;
-	integer i;
+	reg [4:0] lfsr_q;
+	reg [4:0] lfsr_c;
 
-	assign valid = (crc5 == crc5_rem);
-	assign crc5_result = crc5;
+	assign crc_out = lfsr_q;
+	
+	always_comb begin
+		lfsr_c[0] = lfsr_q[0] ^ lfsr_q[2] ^ lfsr_q[3] ^ data_in[0] ^ data_in[3] ^ data_in[5] ^ data_in[6];
+		lfsr_c[1] = lfsr_q[1] ^ lfsr_q[3] ^ lfsr_q[4] ^ data_in[1] ^ data_in[4] ^ data_in[6] ^ data_in[7];
+		lfsr_c[2] = lfsr_q[0] ^ lfsr_q[3] ^ lfsr_q[4] ^ data_in[0] ^ data_in[2] ^ data_in[3] ^ data_in[6] ^ data_in[7];
+		lfsr_c[3] = lfsr_q[0] ^ lfsr_q[1] ^ lfsr_q[4] ^ data_in[1] ^ data_in[3] ^ data_in[4] ^ data_in[7];
+		lfsr_c[4] = lfsr_q[1] ^ lfsr_q[2] ^ data_in[2] ^ data_in[4] ^ data_in[5];
+	end
 
 	always @ (posedge clk, negedge n_rst) begin
-		
-		for (i=$right(d);i<=$left(d);i++) begin
-			if (crc5[$right(crc5)]^d[i]) begin
-				crc5 = (crc5 >> 1)^crc5_poly;
-			end else begin
-				crc5 = crc5 >> 1;
-			end
+		if (~n_rst) begin
+			lfsr_q <= {5{1'b1}};
+		end else begin
+			lfsr_q <= crc_en ? lfsr_c : lfsr_q;
 		end
 	end
 
