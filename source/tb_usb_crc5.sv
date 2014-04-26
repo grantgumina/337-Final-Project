@@ -12,8 +12,7 @@ module tb_usb_crc5();
 
 	parameter CLK_PERIOD = 10.0;
 	
-	reg tb_clk;	// on chip
-	reg tb_clk_trans; // 480 - transceiver
+	reg tb_clk;	
 	reg tb_n_rst;
 	reg tb_crc_en;
 	reg [7:0] tb_data_in;
@@ -35,15 +34,7 @@ module tb_usb_crc5();
 		#(CLK_PERIOD / 2);
 	end
 
-	always begin
-		tb_clk_trans = 1'b0;
-		#(CLK_PERIOD / 2);
-		tb_clk_trans = 1'b1;
-		#(CLK_PERIOD / 2);
-	end
-
 	initial begin
-		// TEST 1
 		tb_n_rst = 1'b0;
 		#(CLK_PERIOD);
 		#(CLK_PERIOD);
@@ -57,9 +48,9 @@ module tb_usb_crc5();
 		#(CLK_PERIOD / 2);
 
 		if (tb_crc_out == 5'b11110) begin
-			$info("PASSED");
+			$info("CRC5 GENERATION PASSED");
 		end else begin
-			$error("FAILED");
+			$error("CRC5 GENERATION FAILED");
 		end
 	end
 endmodule

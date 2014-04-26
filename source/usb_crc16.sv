@@ -1,45 +1,46 @@
 // $Id: $
-// File name:   usb_crc16.sv
+// File name:   usb_crc5.sv
 // Created:     4/21/2014
 // Author:      Grant Gumina
 // Lab Section: 02
 // Version:     1.0  Initial Design Entry
 // Description: CRC16 implementation
 
-`timescale 1ns / 10ps
-
 module usb_crc16
-	(
-	    input wire rst_n,
-	    input wire clk,
-	    input wire clk_trans,
-	    input wire d,
-	    
-	    input wire dump,
-	    output wire out,
-	    output wire valid
-    );
+  (
+    input reg n_rst,
+    input reg clk,
+    input reg [7:0] data_in,
+    input reg crc_en,
+    output reg [15:0] crc_out,
+  );
 
-reg[15:0] r;
-reg[15:0] next;
+    always_comb begin
+        lfsr_c[0] = lfsr_q[8] ^ lfsr_q[9] ^ lfsr_q[10] ^ lfsr_q[11] ^ lfsr_q[12] ^ lfsr_q[13] ^ lfsr_q[14] ^ lfsr_q[15] ^ data_in[0] ^ data_in[1] ^ data_in[2] ^ data_in[3] ^ data_in[4] ^ data_in[5] ^ data_in[6] ^ data_in[7];
+        lfsr_c[1] = lfsr_q[9] ^ lfsr_q[10] ^ lfsr_q[11] ^ lfsr_q[12] ^ lfsr_q[13] ^ lfsr_q[14] ^ lfsr_q[15] ^ data_in[1] ^ data_in[2] ^ data_in[3] ^ data_in[4] ^ data_in[5] ^ data_in[6] ^ data_in[7];
+        lfsr_c[2] = lfsr_q[8] ^ lfsr_q[9] ^ data_in[0] ^ data_in[1];
+        lfsr_c[3] = lfsr_q[9] ^ lfsr_q[10] ^ data_in[1] ^ data_in[2];
+        lfsr_c[4] = lfsr_q[10] ^ lfsr_q[11] ^ data_in[2] ^ data_in[3];
+        lfsr_c[5] = lfsr_q[11] ^ lfsr_q[12] ^ data_in[3] ^ data_in[4];
+        lfsr_c[6] = lfsr_q[12] ^ lfsr_q[13] ^ data_in[4] ^ data_in[5];
+        lfsr_c[7] = lfsr_q[13] ^ lfsr_q[14] ^ data_in[5] ^ data_in[6];
+        lfsr_c[8] = lfsr_q[0] ^ lfsr_q[14] ^ lfsr_q[15] ^ data_in[6] ^ data_in[7];
+        lfsr_c[9] = lfsr_q[1] ^ lfsr_q[15] ^ data_in[7];
+        lfsr_c[11] = lfsr_q[3];
+        lfsr_c[10] = lfsr_q[2];
+        lfsr_c[12] = lfsr_q[4];
+        lfsr_c[13] = lfsr_q[5];
+        lfsr_c[14] = lfsr_q[6];
+        lfsr_c[15] = lfsr_q[7] ^ lfsr_q[8] ^ lfsr_q[9] ^ lfsr_q[10] ^ lfsr_q[11] ^ lfsr_q[12] ^ lfsr_q[13] ^ lfsr_q[14] ^ lfsr_q[15] ^ data_in[0] ^ data_in[1] ^ data_in[2] ^ data_in[3] ^ data_in[4] ^ data_in[5] ^ data_in[6] ^ data_in[7];
 
-assign out = r[15];
-assign valid = (next == 16'b1000000000001101);
-
-always @(*) begin
-    if (dump || out == d)
-        next = { r[14:0], 1'b0 };
-    else
-        next = { !r[14], r[13:2], !r[1], r[0], 1'b1 };
-end
-
-always @(posedge clk or negedge rst_n) begin
-    if (!rst_n) begin
-        r <= 16'hffff;
-    end else if (clk_trans) begin
-        r <= next;
     end
-end
+
+    always @ (posedge clk, negedge n_rst) begin
+        if (~n_rst) begin
+            lfsr_q <= {16{1'b1}};
+        end else begin
+            lfsr_q <= crc_en ? lfsr_c : lfsr_q;
+        end
+    end
 
 endmodule
-
