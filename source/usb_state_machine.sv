@@ -40,12 +40,11 @@ typedef enum bit [3:0] {
 reg dir_rising, dir_falling, nxt_rising, nxt_falling, ulpi_clk_rising, ulpi_clk_falling;
 edge_detector DIR_EDGE_DETECTOR(clk, n_rst, dir, dir_rising, dir_falling);
 edge_detector NXT_EDGE_DETECTOR(clk, n_rst, nxt, nxt_rising, nxt_falling);
-edge_detector ULPI_CLK_EDGE_DETECTOR(clk, n_rst, ulpi_clk, ulpi_clk_rising, ulpi_clk_ralling);
+edge_detector ULPI_CLK_EDGE_DETECTOR(clk, n_rst, ulpi_clk, ulpi_clk_rising, ulpi_clk_falling);
 
 // Model
 stateType current_state;
 stateType next_state;
-reg [7:0] next_internal_data_out;
 
 // View
 assign internal_data_out = data_in;
@@ -79,11 +78,13 @@ begin: NEXT_LOGIC
       
       st_turn_up:
         begin
+          next_state <= st_turn_up;
           // As long as dir stays high, hold until the next rising edge
-          if (!dir)
+          if (!dir) begin
             next_state <= st_idle;
-          if (ulpi_clk_rising)
+          end else if (ulpi_clk_rising) begin
             next_state <= st_receive_rx;
+          end
         end
       
       st_turn_down:
@@ -93,6 +94,7 @@ begin: NEXT_LOGIC
         
       st_receive_rx:
         begin
+          next_state <= st_receive_rx;
           if (nxt) begin
             next_state <= st_err;
           end else if (dir && data_in[5:4] == 2'b01) begin
@@ -104,6 +106,7 @@ begin: NEXT_LOGIC
       
       st_prepare_for_byte:
         begin
+          next_state <= st_prepare_for_byte;
           if (ulpi_clk_rising) begin
             next_state <= st_check_nxt;
           end else if(dir_falling) begin
@@ -113,6 +116,7 @@ begin: NEXT_LOGIC
       
       st_check_nxt:
         begin
+          next_state <= st_check_nxt;
           if(dir && !nxt) begin
             next_state <= st_receive_rx;
           end else if(!dir && !nxt) begin
