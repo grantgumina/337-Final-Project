@@ -8,27 +8,32 @@
 
 module usb_state_machine
 	(
-	  input wire n_rst,
-	  input wire clk,
-		input wire shift_out,
+	    input wire n_rst,
+	    input wire clk,
+        input wire shift_out,
 
 		input wire [7:0] data_in,
+		input wire [7:0] internal_data_in,
 		input wire nxt,
 		input wire dir,
 		input wire ulpi_clk,
 		
-		output wire new_byte,
-		output wire [7:0] data_out,
+		output reg new_byte,
+		output reg [7:0] data_out,
+		output wire [7:0] internal_data_out,
 		
-		output wire stp
+		output reg stp
 	);
 	
 typedef enum bit [3:0] {
   st_idle,
-  st_turn_around,
-  st_receive_rx_cmd,
-  st_prepare_to_receive_byte,
-  st_receive_byte
+  st_turn_up,
+  st_turn_down, // For what?
+  st_receive_rx,
+  st_err,
+  st_check_nxt,
+  st_prepare_for_byte,
+  st_pass_through_byte
 } stateType;
 
 // Catch the edges
@@ -40,18 +45,21 @@ edge_detector ULPI_CLK_EDGE_DETECTOR(clk, n_rst, ulpi_clk, ulpi_clk_rising, ulpi
 // Model
 stateType current_state;
 stateType next_state;
+reg [7:0] next_internal_data_out;
 
 // View
+assign internal_data_out = data_in;
+
 always_comb
 begin: OUT_LOGIC
   new_byte <= 1'b0;
-  data_out <= 8'b0;
   stp <= 1'b0;
+  data_out <= 8'b00000000;
   case(current_state)
-    st_idle:
-      begin
-        // Do shit
-      end
+    st_pass_through_byte:
+			begin
+				new_byte <= 1'b1;
+			end
   endcase
 end
 
@@ -59,50 +67,67 @@ end
 always_comb
 begin: NEXT_LOGIC
   next_state <= st_idle;
+
   case(current_state)
-    begin
       st_idle:
         begin
           // Wait until dir goes high
           if (dir_rising) begin
-            next_state <= st_turn_around;
+            next_state <= st_turn_up;
           end
         end
       
-      st_turn_around:
+      st_turn_up:
         begin
           // As long as dir stays high, hold until the next rising edge
           if (!dir)
-            next_state <= st_idle
+            next_state <= st_idle;
           if (ulpi_clk_rising)
-            next_state <= st_receive_rx_cmd;
+            next_state <= st_receive_rx;
         end
-    
+      
+      st_turn_down:
+        begin
+            next_state <= st_idle;
+        end
         
-      st_receive_rx_cmd:
+      st_receive_rx:
         begin
-          if (dir && !nxt) begin
-            // This is an Rx command
-            if (data[5:4] && 2'b01) begin
-              // Rx Active signal
-              next_state <= st_prepare_to_receive_byte;
-            end
+          if (nxt) begin
+            next_state <= st_err;
+          end else if (dir && data_in[5:4] == 2'b01) begin
+            next_state <= st_prepare_for_byte;
+          end else if (dir_falling) begin
+            next_state <= st_turn_down;
           end
-          if (dir && nxt)
-            next_state <= st_prepare_to_receive_byte;
         end
       
-      st_prepare_to_receive_byte:
+      st_prepare_for_byte:
         begin
-          if (ulpi_clk_rising)
-            next_state <= receive_byte;
+          if (ulpi_clk_rising) begin
+            next_state <= st_check_nxt;
+          end else if(dir_falling) begin
+            next_state <= st_turn_down;
+          end
         end
       
-      st_check_byte:
+      st_check_nxt:
         begin
-          // Stay here for one clock cycle just to pass through the data
+          if(dir && !nxt) begin
+            next_state <= st_receive_rx;
+          end else if(!dir && !nxt) begin
+            next_state <= st_turn_down;
+          end else if (nxt && dir) begin
+            next_state <= st_pass_through_byte;
+          end else begin
+            next_state <= st_err;
+          end
         end
-    end
+        
+      st_pass_through_byte:
+        begin
+          next_state <= st_prepare_for_byte;
+        end
   endcase
 end
 	
