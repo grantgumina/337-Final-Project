@@ -10,8 +10,8 @@
 
 module tb_usb_state_machine ();
 
-parameter CLK_PERIOD = 10.0;
-parameter ULPI_CLK_PERIOD = 40.0;
+parameter CLK_PERIOD = 5.555555556;
+parameter ULPI_CLK_PERIOD = 16.6666667;
 
 reg n_rst, clk, shift_out, nxt, dir, ulpi_clk, new_byte, stp;
 reg [7:0] data_in;
@@ -62,6 +62,10 @@ initial begin
     test_case_num = 1;
     n_rst = 1'b0;
     #CLK_PERIOD
+    assert(new_byte == 1'b0)
+        $info("Power on reset passed");
+    else
+        $error("Power on reset failed");
     n_rst = 1'b1;
     #CLK_PERIOD
 
@@ -71,6 +75,14 @@ initial begin
     dir = 1'b1;
     @(posedge ulpi_clk)
     data_in = 8'hFF;
+    @(posedge clk)
+    @(posedge clk)
+    @(posedge clk)
+    @(negedge clk)
+    assert(new_byte == 1'b0)
+        $info("Test case %d passed", test_case_num);
+    else
+        $error("Test case %d failed", test_case_num);
     @(posedge ulpi_clk)
     dir = 1'b0;
     @(posedge ulpi_clk)
@@ -82,8 +94,21 @@ initial begin
     dir = 1'b1;
     @(posedge ulpi_clk)
     data_in = 8'hFF;
+    @(posedge clk)
+    @(posedge clk)
+    @(posedge clk)
+    @(negedge clk)
+    assert(new_byte == 1'b0)
+        $info("Test case %d passed pt a", test_case_num);
+    else
+        $error("Test case %d failed pt a", test_case_num);
     @(posedge ulpi_clk)
     data_in = 8'h00;
+    @(posedge clk)
+    assert(new_byte == 1'b0)
+        $info("Test case %d passed pt b", test_case_num);
+    else
+        $error("Test case %d failed pt b", test_case_num);
     @(posedge ulpi_clk)
     dir = 1'b0;
 
@@ -95,6 +120,14 @@ initial begin
     data_in = 8'b00010000;
     @(posedge ulpi_clk)
     data_in = 8'b11111111;
+    @(posedge clk)
+    @(posedge clk)
+    @(posedge clk)
+    @(negedge clk)
+    assert(new_byte == 1'b0)
+        $info("Test case %d passed", test_case_num);
+    else
+        $error("Test case %d failed", test_case_num);
     @(posedge ulpi_clk)
     dir = 1'b0;
     @(posedge ulpi_clk)
@@ -109,6 +142,14 @@ initial begin
     @(posedge ulpi_clk)
     nxt = 1'b1;
     data_in = 8'b11111111;
+    @(posedge clk)
+    @(posedge clk)
+    @(posedge clk)
+    @(negedge clk)
+    assert(new_byte == 1'b1)
+        $info("Test case %d passed", test_case_num);
+    else
+        $error("Test case %d failed", test_case_num);
     @(posedge ulpi_clk)
     dir = 1'b0;
     nxt = 1'b0;
@@ -124,8 +165,24 @@ initial begin
     @(posedge ulpi_clk)
     nxt = 1'b1;
     data_in = 8'b11111111;
+    @(posedge clk)
+    @(posedge clk)
+    @(posedge clk)
+    @(negedge clk)
+    assert(new_byte == 1'b1)
+        $info("Test case %d passed pt a", test_case_num);
+    else
+        $error("Test case %d failed pt a", test_case_num);
     @(posedge ulpi_clk)
     data_in = 8'b10101010;
+    @(posedge clk)
+    @(posedge clk)
+    @(posedge clk)
+    @(negedge clk)
+    assert(new_byte == 1'b1)
+        $info("Test case %d passed pt b", test_case_num);
+    else
+        $error("Test case %d failed pt b", test_case_num);
     @(posedge ulpi_clk)
     dir = 1'b0;
     nxt = 1'b0;
