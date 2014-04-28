@@ -1,0 +1,101 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : bridge
+Version: G-2012.06
+Date   : Sun Apr 27 22:23:13 2014
+****************************************
+
+Operating Conditions: typical   Library: osu05_stdcells
+Wire Load Model Mode: top
+
+  Startpoint: current_reg[503]
+              (rising edge-triggered flip-flop)
+  Endpoint: data_out[503]
+            (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  current_reg[503]/CLK (DFFSR)             0.00       0.00 r
+  current_reg[503]/Q (DFFSR)               0.56       0.56 f
+  data_out[503] (out)                      0.00       0.56 f
+  data arrival time                                   0.56
+  -----------------------------------------------------------
+  (Path is unconstrained)
+
+
+1
+ 
+****************************************
+Report : area
+Design : bridge
+Version: G-2012.06
+Date   : Sun Apr 27 22:23:13 2014
+****************************************
+
+Library(s) Used:
+
+    osu05_stdcells (File: /package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db)
+
+Number of ports:                          523
+Number of nets:                          2059
+Number of cells:                         1536
+Number of combinational cells:           1024
+Number of sequential cells:               512
+Number of macros:                           0
+Number of buf/inv:                        512
+Number of references:                       3
+
+Combinational area:       294912.000000
+Noncombinational area:    811008.000000
+Net Interconnect area:      undefined  (No wire load specified)
+
+Total cell area:          1105920.000000
+Total area:                 undefined
+1
+Loading db file '/package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db'
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: There is no defined clock in the design. (PWR-80)
+Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
+ 
+****************************************
+Report : power
+        -hier
+        -analysis_effort low
+Design : bridge
+Version: G-2012.06
+Date   : Sun Apr 27 22:23:14 2014
+****************************************
+
+
+Library(s) Used:
+
+    osu05_stdcells (File: /package/eda/cells/OSU/v2.7/synopsys/lib/ami05/osu05_stdcells.db)
+
+
+Operating Conditions: typical   Library: osu05_stdcells
+Wire Load Model Mode: top
+
+
+Global Operating Voltage = 5    
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1nW
+
+
+--------------------------------------------------------------------------------
+                                       Switch   Int      Leak     Total
+Hierarchy                              Power    Power    Power    Power    %
+--------------------------------------------------------------------------------
+bridge                                    0.455   54.855  355.174   55.310 100.0
+1

@@ -24,7 +24,7 @@ module tb_usb_crc5();
 		.n_rst(tb_n_rst),
 		.data_in(tb_data_in),
 		.crc_en(tb_crc_en),
-		.crc_out(tb_crc_out)
+		.crc_out(tb_crc_out),
 	);
 
 	always begin
