@@ -13,7 +13,7 @@ module usb_state_machine
         input wire shift_out,
 
 		input wire [7:0] data_in,
-		input wire [7:0] internal_data_in,
+		input wire [(512*8)-1:0] internal_data_in,
 		input wire nxt,
 		input wire dir,
 		input wire ulpi_clk,
@@ -25,7 +25,7 @@ module usb_state_machine
 		output reg stp
 	);
 	
-typedef enum bit [3:0] {
+typedef enum bit [4:0] {
   st_idle,
   st_turn_up,
   st_turn_down, // For what?
@@ -33,7 +33,10 @@ typedef enum bit [3:0] {
   st_err,
   st_check_nxt,
   st_prepare_for_byte,
-  st_pass_through_byte
+  st_pass_through_byte,
+  st_send_tx,
+  st_send_data,
+  st_done_sending
 } stateType;
 
 // Catch the edges
@@ -45,6 +48,10 @@ edge_detector ULPI_CLK_EDGE_DETECTOR(clk, n_rst, ulpi_clk, ulpi_clk_rising, ulpi
 // Model
 stateType current_state;
 stateType next_state;
+reg [9:0] index;
+reg [8:0] next_index;
+reg [(512*8)-1:0] mega_shift;
+reg [(512*8)-1:0] next_mega_shift;
 
 // View
 assign internal_data_out = data_in;
@@ -54,11 +61,34 @@ begin: OUT_LOGIC
   new_byte <= 1'b0;
   stp <= 1'b0;
   data_out <= 8'b00000000;
+  next_index <= 9'b000000000;
+  next_mega_shift <= mega_shift;
   case(current_state)
     st_pass_through_byte:
-			begin
-				new_byte <= 1'b1;
-			end
+        begin
+            new_byte <= 1'b1;
+        end
+
+    st_send_data:
+        begin
+            next_index <= next_index;
+            next_mega_shift <= {{1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}, mega_shift[(512*8)-1:8]};
+            data_out <= mega_shift[7:0];
+            if (ulpi_clk_rising) begin
+                next_index <= index + 1;
+            end
+        end
+
+    st_done_sending:
+        begin
+            stp <= 1'b1;
+        end
+
+    st_send_tx:
+        begin
+            data_out <= 8'b01000000;
+            next_mega_shift <= internal_data_in;
+        end
   endcase
 end
 
@@ -73,6 +103,8 @@ begin: NEXT_LOGIC
           // Wait until dir goes high
           if (dir_rising) begin
             next_state <= st_turn_up;
+          end else if (shift_out && ulpi_clk_rising) begin
+            next_state <= st_send_tx;
           end
         end
       
@@ -132,6 +164,19 @@ begin: NEXT_LOGIC
         begin
           next_state <= st_prepare_for_byte;
         end
+
+      st_send_tx:
+        begin
+          next_state <= st_send_data;
+        end
+
+      st_send_data:
+        begin
+            next_state <= st_send_data;
+            if (index == 511) begin
+                next_state <= st_done_sending;
+            end
+        end
   endcase
 end
 	
@@ -139,8 +184,12 @@ always_ff @ (posedge clk, negedge n_rst)
 begin : REG_LOGIC
   if (n_rst == 1'b0) begin
     current_state <= st_idle;
+    index <= 9'b000000000;
+    mega_shift <= '0;
   end else begin
     current_state <= next_state;
+    index <= next_index;
+    mega_shift <= next_mega_shift;
   end
 end
 

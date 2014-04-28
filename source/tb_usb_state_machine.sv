@@ -15,7 +15,7 @@ parameter ULPI_CLK_PERIOD = 16.6666667;
 
 reg n_rst, clk, shift_out, nxt, dir, ulpi_clk, new_byte, stp;
 reg [7:0] data_in;
-reg [7:0] internal_data_in;
+reg [(512*8)-1:0] internal_data_in;
 reg [7:0] data_out;
 reg [7:0] internal_data_out;
 
@@ -188,6 +188,20 @@ initial begin
     nxt = 1'b0;
     @(posedge ulpi_clk)
     @(posedge ulpi_clk);
+
+    // TX CMD for shift out
+    test_case_num = 7;
+    internal_data_in = 'hAB;
+    shift_out = 1'b1;
+    @(posedge ulpi_clk);
+    shift_out = 1'b0;
+    #(ULPI_CLK_PERIOD * 511)
+    assert(stp == 1'b1)
+        $info("Test case %d passed", test_case_num);
+    else
+        $error("Test case %d failed", test_case_num);
+
+
 
 end
 
