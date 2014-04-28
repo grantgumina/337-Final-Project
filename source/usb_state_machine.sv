@@ -13,7 +13,7 @@ module usb_state_machine
         input wire shift_out,
 
 		input wire [7:0] data_in,
-		input wire [(512*8)-1:0] internal_data_in,
+		input wire [(16*4*8+2*8)-1:0] internal_data_in,
 		input wire nxt,
 		input wire dir,
 		input wire ulpi_clk,
@@ -50,8 +50,8 @@ stateType current_state;
 stateType next_state;
 reg [9:0] index;
 reg [8:0] next_index;
-reg [(512*8)-1:0] mega_shift;
-reg [(512*8)-1:0] next_mega_shift;
+reg [(16*4*8+2*8)-1:0] mega_shift;
+reg [(16*4*8+2*8)-1:0] next_mega_shift;
 
 // View
 assign internal_data_out = data_in;
@@ -72,10 +72,10 @@ begin: OUT_LOGIC
     st_send_data:
         begin
             next_index <= next_index;
-            next_mega_shift <= {{1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}, mega_shift[(512*8)-1:8]};
             data_out <= mega_shift[7:0];
             if (ulpi_clk_rising) begin
                 next_index <= index + 1;
+                next_mega_shift <= {8'h00, mega_shift[(16*4*8+2*8)-1:8]};
             end
         end
 
