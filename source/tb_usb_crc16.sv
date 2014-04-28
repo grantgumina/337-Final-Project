@@ -8,12 +8,16 @@
 
 `timescale 1ns / 10ps
 
-module tb_usb_crc16_valid();
+module tb_usb_crc16();
+
+	parameter CLK_PERIOD = 10.0;
+
 	reg tb_clk;	
 	reg tb_n_rst;
-	reg tb_crc_en;
 	reg [7:0] tb_data_in;
 	reg [15:0] tb_crc_out;
+	reg tb_crc_en;
+	reg flag;
 
 	usb_crc16 CRC16
 	(
@@ -21,7 +25,8 @@ module tb_usb_crc16_valid();
 		.n_rst(tb_n_rst),
 		.data_in(tb_data_in),
 		.crc_en(tb_crc_en),
-		.crc_out(tb_crc_out)
+		.crc_out(tb_crc_out),
+		.flag(flag)
 	);
 
 	always begin
@@ -32,13 +37,23 @@ module tb_usb_crc16_valid();
 	end
 
 	initial begin
-		tb_data_in = 8'b10101010;
+		tb_n_rst = 1'b0;
+		#(CLK_PERIOD);
+		#(CLK_PERIOD);
+		tb_n_rst = 1'b1;
+		@(posedge tb_clk);
 		tb_crc_en = 1'b1;
+		tb_data_in = 8'b10000111;
 
-		#(270);
+		//#(5506);
+		#(400);
 		#(CLK_PERIOD / 2);
+		//tb_crc_en = 1'b0;
+		//@(posedge tb_clk);
 
-		if (tb_crc_out == 5'b11110) begin
+		if (tb_crc_out == 16'b0000001100010010) begin
+			tb_crc_en = 1'b0;
+			@(posedge tb_clk);
 			$info("CRC16 GENERATION PASSED");
 		end else begin
 			$error("CRC16 GENERATION FAILED");

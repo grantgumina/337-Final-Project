@@ -21,7 +21,7 @@ module usb_crc5
 	reg [4:0] lfsr_c;
 
 	assign crc_out = lfsr_q;
-	
+
 	always_comb begin
 		lfsr_c[0] = lfsr_q[0] ^ lfsr_q[2] ^ lfsr_q[3] ^ data_in[0] ^ data_in[3] ^ data_in[5] ^ data_in[6];
 		lfsr_c[1] = lfsr_q[1] ^ lfsr_q[3] ^ lfsr_q[4] ^ data_in[1] ^ data_in[4] ^ data_in[6] ^ data_in[7];
