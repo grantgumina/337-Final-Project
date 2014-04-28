@@ -40,10 +40,10 @@ typedef enum bit [4:0] {
 } stateType;
 
 // Catch the edges
-reg dir_rising, dir_falling, nxt_rising, nxt_falling, ulpi_clk_rising, ulpi_clk_falling;
-edge_detector DIR_EDGE_DETECTOR(clk, n_rst, dir, dir_rising, dir_falling);
-edge_detector NXT_EDGE_DETECTOR(clk, n_rst, nxt, nxt_rising, nxt_falling);
-edge_detector ULPI_CLK_EDGE_DETECTOR(clk, n_rst, ulpi_clk, ulpi_clk_rising, ulpi_clk_falling);
+reg dir_rising, dir_falling, ulpi_clk_rising;
+edge_detector DIR_EDGE_DETECTOR(clk, n_rst, dir, dir_rising);
+edge_detector DIR_INVERSE_EDGE_DETECTOR(clk, n_rst, !dir, dir_falling);
+edge_detector ULPI_CLK_EDGE_DETECTOR(clk, n_rst, ulpi_clk, ulpi_clk_rising);
 
 // Model
 stateType current_state;

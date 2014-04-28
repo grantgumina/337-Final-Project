@@ -205,14 +205,14 @@ initial begin
         @(negedge clk)
         if (i%2 == 1) begin
             assert(data_out == 8'hBB)
-                $info("Tx BB test case passed");
+                $info("Tx test case %d (BB) passed", i);
             else
-                $error("Tx BB test case failed");
+                $error("Tx test case %d (BB) failed", i);
         end else begin
             assert(data_out == 8'hAA)
-                $info("Tx AA test case passed");
+                $info("Tx test case %d (AA) passed", i);
             else
-                $error("Tx AA test case failed");
+                $error("Tx test case %d (AA) failed", i);
         end
     end
 end
