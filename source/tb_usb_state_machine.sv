@@ -15,9 +15,10 @@ parameter ULPI_CLK_PERIOD = 16.6666667;
 
 reg n_rst, clk, shift_out, nxt, dir, ulpi_clk, new_byte, stp;
 reg [7:0] data_in;
-reg [7:0] internal_data_in;
+reg [(16*4*8+2*8)-1:0] internal_data_in;
 reg [7:0] data_out;
 reg [7:0] internal_data_out;
+int i;
 
 reg [3:0] test_case_num;
 
@@ -189,6 +190,31 @@ initial begin
     @(posedge ulpi_clk)
     @(posedge ulpi_clk);
 
+    // TX CMD for shift out
+    test_case_num = 7;
+    internal_data_in = {33{8'hAA, 8'hBB}};
+    shift_out = 1'b1;
+    @(posedge ulpi_clk);
+    shift_out = 1'b0;
+    assert(data_out == 8'hAA)
+        $info("Tx AA test case passed");
+    else
+        $error("Tx AA test case failed");
+    for (i=0; i<65; i++) begin
+        @(posedge ulpi_clk)
+        @(negedge clk)
+        if (i%2 == 1) begin
+            assert(data_out == 8'hBB)
+                $info("Tx test case %d (BB) passed", i);
+            else
+                $error("Tx test case %d (BB) failed", i);
+        end else begin
+            assert(data_out == 8'hAA)
+                $info("Tx test case %d (AA) passed", i);
+            else
+                $error("Tx test case %d (AA) failed", i);
+        end
+    end
 end
 
 endmodule
