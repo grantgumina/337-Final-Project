@@ -9,6 +9,7 @@
 # //
 # vsim +no_glitch_msg -L /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work -L /home/ecegrid/a/ece337/Class0.5u/GOLD_LIB -Lf /home/ecegrid/a/ece337/Class0.5u/ECE337_IP/vsim -coverage -i -t ps source_work/.tb_bridge 
 # ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: source/tb_bridge.sv(30): (vopt-2241) Connection width does not match width of port 'data_out'. The port definition is at: source/bridge.sv(17).
 # Loading sv_std.std
 # Loading work.tb_bridge(fast)
 add wave *

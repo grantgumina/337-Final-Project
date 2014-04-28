@@ -7,7 +7,7 @@ Report : timing
         -max_paths 1
 Design : bridge
 Version: G-2012.06
-Date   : Sun Apr 27 22:23:13 2014
+Date   : Sun Apr 27 23:18:37 2014
 ****************************************
 
 Operating Conditions: typical   Library: osu05_stdcells
@@ -36,7 +36,7 @@ Wire Load Model Mode: top
 Report : area
 Design : bridge
 Version: G-2012.06
-Date   : Sun Apr 27 22:23:13 2014
+Date   : Sun Apr 27 23:18:37 2014
 ****************************************
 
 Library(s) Used:
@@ -71,7 +71,7 @@ Report : power
         -analysis_effort low
 Design : bridge
 Version: G-2012.06
-Date   : Sun Apr 27 22:23:14 2014
+Date   : Sun Apr 27 23:18:38 2014
 ****************************************
 
 

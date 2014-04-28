@@ -16,9 +16,9 @@ module tb_bridge();
 	reg tb_n_rst;
 	reg tb_shift_en;
 	reg [7:0] tb_data_in;
-	reg [511:0] tb_data_out;
+	reg [527:0] tb_data_out;
 
-	reg [511:0] tb_desired;
+	reg [527:0] tb_desired;
 
 	bridge BRIDGE
 	(
@@ -52,7 +52,7 @@ module tb_bridge();
 		tb_shift_en = 1'b0;
 		@(posedge tb_clk);
 
-		tb_desired = {{504{1'b0}}, 8'b10000001};
+		tb_desired = {{520{1'b0}}, 8'b10000001};
 		//{512{504{1'b0}, 8'b10000111}}
 		if (tb_data_out == tb_desired) begin
 			$info("PASSED TEST 1");
@@ -67,7 +67,7 @@ module tb_bridge();
 		tb_shift_en = 1'b0;
 		@(posedge tb_clk);
 
-		tb_desired = {{496{1'b0}}, 8'b10000001, 8'b10000001};
+		tb_desired = {{512{1'b0}}, 8'b10000001, 8'b10000001};
 		if (tb_data_out == tb_desired) begin
 			$info("PASSED TEST 2");
 		end else begin

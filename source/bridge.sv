@@ -17,15 +17,15 @@ module bridge
 		output reg [511:0] data_out
 	);
 
-	reg [511:0] current;
-	reg [511:0] next;
-	reg [511:0] i;
+	reg [527:0] current;
+	reg [527:0] next;
+	reg [527:0] i;
 
 	assign data_out = current;
 
 	always_ff @ (posedge clk, negedge n_rst) begin
 		if (n_rst == 0) begin
-			current	<= {512{1'b0}};
+			current	<= {528{1'b0}};
 		end else begin
 			current <= next;
 		end
@@ -34,7 +34,7 @@ module bridge
 	always_comb begin
 		next <= current;
 		if (shift_en) begin
-			next <= {current[511 - 8:0], data_in};
+			next <= {current[527 - 8:0], data_in};
 		end else begin
 			next <= current;
 		end

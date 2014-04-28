@@ -28,7 +28,7 @@
 # Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.nor2x1(behavioral)#1
 # Loading /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work.nand3x1(behavioral)#1
 add wave *
-run 6000 ns
+run 500 ns
 # ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
 #    Time: 25660 ps  Iteration: 0  Instance: /tb_usb_crc16/CRC16/\lfsr_q_reg[0] 
 # ** Warning: DFFSR instance grabbed an invalid value and is propagating a metastable value
@@ -75,3 +75,5 @@ run 6000 ns
 #    Time: 25800 ps  Iteration: 0  Instance: /tb_usb_crc16/CRC16/\lfsr_q_reg[7] 
 # ** Error: CRC16 GENERATION FAILED
 #    Time: 430 ns  Scope: tb_usb_crc16 File: source/tb_usb_crc16.sv Line: 59
+# Causality operation skipped due to absense of debug database file
+find drivers -source -time {421854 ps} -cause sim:/tb_usb_crc16/flag
