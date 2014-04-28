@@ -12,6 +12,6 @@
 # Loading sv_std.std
 # Loading work.tb_usb_crc16(fast)
 add wave *
-run 6000 ns
-# ** Error: CRC16 GENERATION FAILED
-#    Time: 5536 ns  Scope: tb_usb_crc16 File: source/tb_usb_crc16.sv Line: 51
+run 600 ns
+# ** Info: CRC16 GENERATION PASSED
+#    Time: 435 ns  Scope: tb_usb_crc16 File: source/tb_usb_crc16.sv Line: 53

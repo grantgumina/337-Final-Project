@@ -12,13 +12,7 @@
 # Loading sv_std.std
 # Loading work.tb_usb_crc5(fast)
 add wave *
-run 400 ns
-# ** Error: FAILED
-#    Time: 300 ns  Scope: tb_usb_crc5 File: source/tb_usb_crc5.sv Line: 62
-restart -f
-# Loading sv_std.std
-# Loading work.tb_usb_crc5(fast)
-add wave -r *
-run 400 ns
-# ** Error: FAILED
-#    Time: 300 ns  Scope: tb_usb_crc5 File: source/tb_usb_crc5.sv Line: 62
+run 600 ns
+# ** Info: CRC5 GENERATION PASSED
+#    Time: 300 ns  Scope: tb_usb_crc5 File: source/tb_usb_crc5.sv Line: 51
+# Causality operation skipped due to absense of debug database file

@@ -18,7 +18,7 @@ module usb_crc5
     );
 
 	reg [4:0] lfsr_q;
-	reg [4:0] lfsr_c;
+	reg [4:0] lfsr_c = {5{1'b1}};
 
 	assign crc_out = lfsr_q;
 

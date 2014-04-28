@@ -24,7 +24,7 @@ module tb_usb_crc5();
 		.n_rst(tb_n_rst),
 		.data_in(tb_data_in),
 		.crc_en(tb_crc_en),
-		.crc_out(tb_crc_out),
+		.crc_out(tb_crc_out)
 	);
 
 	always begin
@@ -36,11 +36,11 @@ module tb_usb_crc5();
 
 	initial begin
 		tb_n_rst = 1'b0;
+		tb_crc_en = 1'b0;
 		#(CLK_PERIOD);
 		#(CLK_PERIOD);
 		tb_n_rst = 1'b1;
 		@(posedge tb_clk);
-
 		tb_data_in = 8'b10101010;
 		tb_crc_en = 1'b1;
 
