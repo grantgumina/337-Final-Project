@@ -15,12 +15,13 @@ include /home/ecegrid/a/ece337/Course_Prod/course_make_vars
 # (do not include the source folder in the name)
 # NOTE: YOU WILL NEED TO SET THIS VARIABLE'S VALUE WHEN WORKING WITH HEIRARCHICAL DESIGNS
 # AND THE AUTOMATED GRADING SYSTEM
-COMPONENT_FILES	:= avg.sv meta_usb.sv usb_crc5.sv usb_crc16.sv bridge.sv
+COMPONENT_FILES	:=
 
 # Specify the name of the top level file (do not include the source folder in the name)
 # NOTE: YOU WILL NEED TO SET THIS VARIABLE'S VALUE WHEN WORKING WITH HEIRARCHICAL DESIGNS
 # AND THE AUTOMATED GRADING SYSTEM
-TOP_LEVEL_FILE	:= top.sv
+TOP_LEVEL_FILE	:= average.sv
+
 # Specify the filepath of the test bench you want to use (ie. tb_top_level.sv)
 # (do not include the source folder in the name)
 TEST_BENCH	:= tb_$(TOP_LEVEL_FILE)
@@ -29,10 +30,10 @@ TEST_BENCH	:= tb_$(TOP_LEVEL_FILE)
 # other than the actual design files)( do not include the 'source/')
 # If you are not using one of the sram models simply remove the correspoinding
 # filename from this variable
-TB_HELPER_FILES	:= off_chip_sram_wrapper.vhd on_chip_sram_wrapper.vhd
+TB_HELPER_FILES	:=  on_chip_sram_wrapper.vhd
 
 # Get the top level design and test_bench module names
-TB_MODULE		:= $(notdir $(basename $(TEST_BENCH)))
+TB_MODULE	:= $(notdir $(basename $(TEST_BENCH)))
 TOP_MODULE	:= $(notdir $(basename $(TOP_LEVEL_FILE)))
 
 # Select the Cell Library to use with simulations
