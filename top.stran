@@ -24,3 +24,4 @@
 # Loading /home/ecegrid/a/ece337/Class0.5u/ECE337_IP/vsim.simple_scale_mem(scaleable_memory)#1
 add wave -r *
 run 1000000ns
+# Causality operation skipped due to absense of debug database file

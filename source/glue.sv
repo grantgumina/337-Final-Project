@@ -43,7 +43,7 @@ reg average_ready;
 assign average_ready = ar1&&ar2&&ar3&&ar4&&ar5&&ar6&&ar7&&ar8&&ar9&&ar10&&ar11&&ar12&&ar13&&ar14&&ar15&&ar16;
 
 usb_crc16 CRC_CHECKER (n_rst, clk, crc_data_in, crc_enable, crc_valid);
-
+assign usb_data_out[15:0] = 16'hABCD;
 average AVERAGER_1 (clk, n_rst, add_value, input_sr[47:16], ar1, usb_data_out[47:16]);
 average AVERAGER_2 (clk, n_rst, add_value, input_sr[79:48], ar2, usb_data_out[79:48]);
 average AVERAGER_3 (clk, n_rst, add_value, input_sr[111:80], ar3, usb_data_out[111:80]);

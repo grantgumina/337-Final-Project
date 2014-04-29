@@ -47,8 +47,8 @@ edge_detector ULPI_CLK_EDGE_DETECTOR(clk, n_rst, ulpi_clk, ulpi_clk_rising);
 // Model
 stateType current_state;
 stateType next_state;
-reg [8:0] index;
-reg [8:0] next_index;
+reg [9:0] index;
+reg [9:0] next_index;
 reg [(16*4*8+2*8)-1:0] mega_shift;
 reg [(16*4*8+2*8)-1:0] next_mega_shift;
 
@@ -60,7 +60,7 @@ begin: OUT_LOGIC
   new_byte <= 1'b0;
   stp <= 1'b0;
   data_out <= 8'b00000000;
-  next_index <= 8'b00000000;
+  next_index <= 9'b000000000;
   next_mega_shift <= mega_shift;
   case(current_state)
     st_pass_through_byte:
@@ -73,7 +73,7 @@ begin: OUT_LOGIC
     st_send_data:
         begin
             next_index <= index;
-            data_out <= mega_shift[(16*4*8+2*8)-1:(16*4*8+2*8)-1-8];
+            data_out <= mega_shift[(16*4*8+2*8)-1:(16*4*8+2*8)-1-7];
             if (ulpi_clk_rising) begin
                 next_index <= index + 1;
                 next_mega_shift <= {mega_shift[(16*4*8+2*8)-1-8:0], 8'h00};
@@ -189,7 +189,7 @@ always_ff @ (posedge clk, negedge n_rst)
 begin : REG_LOGIC
   if (n_rst == 1'b0) begin
     current_state <= st_idle;
-    index <= 8'b00000000;
+    index <= 9'b000000000;
     mega_shift <= '0;
   end else begin
     current_state <= next_state;
