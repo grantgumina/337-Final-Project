@@ -81,7 +81,7 @@ begin: OUT_LOGIC
 
         st_shift_in:
             begin
-                next_input_sr = {input_sr[519:8], 8'h00};
+                next_input_sr <= {input_sr[519:8], 8'h00};
                 next_count <= count + 1;
                 if(count == 65) begin
                     next_count <= 7'b0000000;
