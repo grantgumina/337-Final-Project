@@ -1,0 +1,163 @@
+# //  ModelSim SE-64 10.1b Apr 26 2012 Linux 2.6.32-431.5.1.el6.x86_64
+# //
+# //  Copyright 1991-2012 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //
+# vsim +no_glitch_msg -L /home/ecegrid/a/ece337/Course_Prod/Cell_Libs/AMI_05/vhdl_work -L /home/ecegrid/a/ece337/Class0.5u/GOLD_LIB -Lf /home/ecegrid/a/ece337/Class0.5u/ECE337_IP/vsim -coverage -i -t ps source_work/.tb_usb_state_machine 
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-143) Recognized 1 FSM in module "usb_state_machine(fast)".
+# Loading sv_std.std
+# Loading work.tb_usb_state_machine(fast)
+run 10000ns
+# ** Info: Power on reset passed
+#    Time: 5560 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 67
+# ** Info: Test case  2 passed
+#    Time: 50040 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 83
+# ** Info: Test case  3 passed pt a
+#    Time: 133440 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 101
+# ** Info: Test case  3 passed pt b
+#    Time: 141780 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 108
+# ** Info: Test case  4 passed
+#    Time: 216840 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 126
+# ** Info: Test case  5 passed
+#    Time: 316920 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 147
+# ** Info: Test case  6 passed pt a
+#    Time: 417 ns  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 169
+# ** Info: Test case  6 passed pt b
+#    Time: 433680 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 178
+# ** Info: Tx first byte (BB) test case passed
+#    Time: 491470 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 194
+# ** Info: Tx test case           0 (AA) passed
+#    Time: 511520 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 207
+# ** Info: Tx test case           1 (BB) passed
+#    Time: 528200 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 202
+# ** Info: Tx test case           2 (AA) passed
+#    Time: 544880 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 207
+# ** Info: Tx test case           3 (BB) passed
+#    Time: 561560 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 202
+# ** Info: Tx test case           4 (AA) passed
+#    Time: 578240 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 207
+# ** Info: Tx test case           5 (BB) passed
+#    Time: 594920 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 202
+# ** Info: Tx test case           6 (AA) passed
+#    Time: 611600 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 207
+# ** Info: Tx test case           7 (BB) passed
+#    Time: 628280 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 202
+# ** Info: Tx test case           8 (AA) passed
+#    Time: 644960 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 207
+# ** Info: Tx test case           9 (BB) passed
+#    Time: 661640 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 202
+# ** Info: Tx test case          10 (AA) passed
+#    Time: 678320 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 207
+# ** Info: Tx test case          11 (BB) passed
+#    Time: 695 ns  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 202
+# ** Info: Tx test case          12 (AA) passed
+#    Time: 711680 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 207
+# ** Info: Tx test case          13 (BB) passed
+#    Time: 728360 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 202
+# ** Info: Tx test case          14 (AA) passed
+#    Time: 745040 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 207
+# ** Info: Tx test case          15 (BB) passed
+#    Time: 761720 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 202
+# ** Info: Tx test case          16 (AA) passed
+#    Time: 778400 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 207
+# ** Info: Tx test case          17 (BB) passed
+#    Time: 795080 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 202
+# ** Info: Tx test case          18 (AA) passed
+#    Time: 811760 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 207
+# ** Info: Tx test case          19 (BB) passed
+#    Time: 828440 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 202
+# ** Info: Tx test case          20 (AA) passed
+#    Time: 845120 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 207
+# ** Info: Tx test case          21 (BB) passed
+#    Time: 861800 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 202
+# ** Info: Tx test case          22 (AA) passed
+#    Time: 878480 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 207
+# ** Info: Tx test case          23 (BB) passed
+#    Time: 895160 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 202
+# ** Info: Tx test case          24 (AA) passed
+#    Time: 911840 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 207
+# ** Info: Tx test case          25 (BB) passed
+#    Time: 928520 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 202
+# ** Info: Tx test case          26 (AA) passed
+#    Time: 945200 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 207
+# ** Info: Tx test case          27 (BB) passed
+#    Time: 961880 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 202
+# ** Info: Tx test case          28 (AA) passed
+#    Time: 978560 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 207
+# ** Info: Tx test case          29 (BB) passed
+#    Time: 995240 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 202
+# ** Info: Tx test case          30 (AA) passed
+#    Time: 1011920 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 207
+# ** Info: Tx test case          31 (BB) passed
+#    Time: 1028600 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 202
+# ** Info: Tx test case          32 (AA) passed
+#    Time: 1045280 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 207
+# ** Info: Tx test case          33 (BB) passed
+#    Time: 1061960 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 202
+# ** Info: Tx test case          34 (AA) passed
+#    Time: 1078640 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 207
+# ** Info: Tx test case          35 (BB) passed
+#    Time: 1095320 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 202
+# ** Info: Tx test case          36 (AA) passed
+#    Time: 1112 ns  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 207
+# ** Info: Tx test case          37 (BB) passed
+#    Time: 1128680 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 202
+# ** Info: Tx test case          38 (AA) passed
+#    Time: 1145360 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 207
+# ** Info: Tx test case          39 (BB) passed
+#    Time: 1162040 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 202
+# ** Info: Tx test case          40 (AA) passed
+#    Time: 1178720 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 207
+# ** Info: Tx test case          41 (BB) passed
+#    Time: 1195400 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 202
+# ** Info: Tx test case          42 (AA) passed
+#    Time: 1212080 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 207
+# ** Info: Tx test case          43 (BB) passed
+#    Time: 1228760 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 202
+# ** Info: Tx test case          44 (AA) passed
+#    Time: 1245440 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 207
+# ** Info: Tx test case          45 (BB) passed
+#    Time: 1262120 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 202
+# ** Info: Tx test case          46 (AA) passed
+#    Time: 1278800 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 207
+# ** Info: Tx test case          47 (BB) passed
+#    Time: 1295480 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 202
+# ** Info: Tx test case          48 (AA) passed
+#    Time: 1312160 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 207
+# ** Info: Tx test case          49 (BB) passed
+#    Time: 1328840 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 202
+# ** Info: Tx test case          50 (AA) passed
+#    Time: 1345520 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 207
+# ** Info: Tx test case          51 (BB) passed
+#    Time: 1362200 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 202
+# ** Info: Tx test case          52 (AA) passed
+#    Time: 1378880 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 207
+# ** Info: Tx test case          53 (BB) passed
+#    Time: 1395560 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 202
+# ** Info: Tx test case          54 (AA) passed
+#    Time: 1412240 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 207
+# ** Info: Tx test case          55 (BB) passed
+#    Time: 1428920 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 202
+# ** Info: Tx test case          56 (AA) passed
+#    Time: 1445600 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 207
+# ** Info: Tx test case          57 (BB) passed
+#    Time: 1462280 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 202
+# ** Info: Tx test case          58 (AA) passed
+#    Time: 1478960 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 207
+# ** Info: Tx test case          59 (BB) passed
+#    Time: 1495640 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 202
+# ** Info: Tx test case          60 (AA) passed
+#    Time: 1512320 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 207
+# ** Info: Tx test case          61 (BB) passed
+#    Time: 1529 ns  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 202
+# ** Info: Tx test case          62 (AA) passed
+#    Time: 1545680 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 207
+# ** Info: Tx test case          63 (BB) passed
+#    Time: 1562360 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 202
+# ** Info: Tx test case          64 (AA) passed
+#    Time: 1579040 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 207

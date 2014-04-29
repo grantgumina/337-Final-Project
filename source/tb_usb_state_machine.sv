@@ -78,7 +78,6 @@ initial begin
     data_in = 8'hFF;
     @(posedge clk)
     @(posedge clk)
-    @(posedge clk)
     @(negedge clk)
     assert(new_byte == 1'b0)
         $info("Test case %d passed", test_case_num);
@@ -95,7 +94,6 @@ initial begin
     dir = 1'b1;
     @(posedge ulpi_clk)
     data_in = 8'hFF;
-    @(posedge clk)
     @(posedge clk)
     @(posedge clk)
     @(negedge clk)
@@ -123,7 +121,6 @@ initial begin
     data_in = 8'b11111111;
     @(posedge clk)
     @(posedge clk)
-    @(posedge clk)
     @(negedge clk)
     assert(new_byte == 1'b0)
         $info("Test case %d passed", test_case_num);
@@ -142,12 +139,11 @@ initial begin
     data_in = 8'b00010000;
     @(posedge ulpi_clk)
     nxt = 1'b1;
-    data_in = 8'b11111111;
-    @(posedge clk)
+    data_in = 8'b10101010;
     @(posedge clk)
     @(posedge clk)
     @(negedge clk)
-    assert(new_byte == 1'b1)
+    assert(new_byte == 1'b1 && internal_data_out == 8'b10101010)
         $info("Test case %d passed", test_case_num);
     else
         $error("Test case %d failed", test_case_num);
@@ -168,9 +164,8 @@ initial begin
     data_in = 8'b11111111;
     @(posedge clk)
     @(posedge clk)
-    @(posedge clk)
     @(negedge clk)
-    assert(new_byte == 1'b1)
+    assert(new_byte == 1'b1 && internal_data_out == 8'b11111111)
         $info("Test case %d passed pt a", test_case_num);
     else
         $error("Test case %d failed pt a", test_case_num);
@@ -178,9 +173,8 @@ initial begin
     data_in = 8'b10101010;
     @(posedge clk)
     @(posedge clk)
-    @(posedge clk)
     @(negedge clk)
-    assert(new_byte == 1'b1)
+    assert(new_byte == 1'b1 && internal_data_out == 8'b10101010)
         $info("Test case %d passed pt b", test_case_num);
     else
         $error("Test case %d failed pt b", test_case_num);
@@ -196,10 +190,10 @@ initial begin
     shift_out = 1'b1;
     @(posedge ulpi_clk);
     shift_out = 1'b0;
-    assert(data_out == 8'hAA)
-        $info("Tx AA test case passed");
+    assert(data_out == 8'hBB)
+        $info("Tx first byte (BB) test case passed");
     else
-        $error("Tx AA test case failed");
+        $error("Tx first byte (BB) test case failed");
     for (i=0; i<65; i++) begin
         @(posedge ulpi_clk)
         @(negedge clk)

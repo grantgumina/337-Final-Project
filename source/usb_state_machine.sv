@@ -25,13 +25,12 @@ module usb_state_machine
 		output reg stp
 	);
 	
-typedef enum bit [4:0] {
+typedef enum bit [3:0] {
   st_idle,
   st_turn_up,
   st_turn_down, // For what?
   st_receive_rx,
   st_err,
-  st_check_nxt,
   st_prepare_for_byte,
   st_pass_through_byte,
   st_send_tx,
@@ -66,7 +65,9 @@ begin: OUT_LOGIC
   case(current_state)
     st_pass_through_byte:
         begin
-            new_byte <= 1'b1;
+            if (nxt && dir) begin
+                new_byte <= 1'b1;
+            end
         end
 
     st_send_data:
@@ -140,29 +141,22 @@ begin: NEXT_LOGIC
         begin
           next_state <= st_prepare_for_byte;
           if (ulpi_clk_rising) begin
-            next_state <= st_check_nxt;
+            next_state <= st_pass_through_byte;
           end else if(dir_falling) begin
             next_state <= st_turn_down;
-          end
-        end
-      
-      st_check_nxt:
-        begin
-          next_state <= st_check_nxt;
-          if(dir && !nxt) begin
-            next_state <= st_receive_rx;
-          end else if(!dir && !nxt) begin
-            next_state <= st_turn_down;
-          end else if (nxt && dir) begin
-            next_state <= st_pass_through_byte;
-          end else begin
-            next_state <= st_err;
           end
         end
         
       st_pass_through_byte:
         begin
-          next_state <= st_prepare_for_byte;
+          next_state <= st_pass_through_byte;
+          if(dir && !nxt) begin
+            next_state <= st_receive_rx;
+          end else if(!dir && !nxt) begin
+            next_state <= st_turn_down;
+          end else if (nxt && dir) begin
+            next_state <= st_prepare_for_byte;
+          end
         end
 
       st_send_tx:

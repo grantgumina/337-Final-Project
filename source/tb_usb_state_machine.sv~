@@ -1,0 +1,26 @@
+// $Id: $
+// File name:   tb_usb_state_machine.sv
+// Created:     4/23/2014
+// Author:      Luke Walsh
+// Lab Section: 337-02
+// Version:     1.0  Initial Design Entry
+// Description: such testing
+
+usb_state_machine USB_STATE_MACHINE
+	(
+	  input wire n_rst,
+	  input wire clk,
+		input wire shift_out,
+
+		input wire [7:0] data_in,
+		input wire [7:0] internal_data_in,
+		input wire nxt,
+		input wire dir,
+		input wire ulpi_clk,
+		
+		output wire new_byte,
+		output wire [7:0] data_out,
+		output wire [7:0] internal_data_out,
+		
+		output wire stp
+	);

@@ -6,11 +6,12 @@
 // Version:     1.0  Initial Design Entry
 // Description: edge my bedge
 
-module edge_detector (
+module scl_edge (
   input wire clk,
   input wire n_rst,
   input wire scl,
-  output wire rising_edge_found
+  output wire rising_edge_found,
+  output wire falling_edge_found
 );
 
 reg scl_intermediate;
@@ -32,7 +33,8 @@ begin : SCL_FF2
     scl_end <= scl_intermediate;
 end
 
-// Catch the edge
+// Catch the edges
+assign falling_edge_found = ~scl_intermediate && scl_end;
 assign rising_edge_found = scl_intermediate && ~scl_end;
 
 endmodule

@@ -14,13 +14,16 @@ module usb_crc16
         input reg clk,
         input reg [7:0] data_in,
         input reg crc_en,
-        output reg [15:0] crc_out
+        output reg [15:0] crc_out,
+        output reg crc_ready,
+        output reg crc_valid
     );
 
     reg [15:0] lfsr_q;
     reg [15:0] lfsr_c = {16{1'b1}}; // because otherwise lfsr_c is metastable in source... no gate delays
 
     assign crc_out = lfsr_q;
+    assign crc_valid = (crc_out == 16'b0100000100111111);
 
     always_comb begin
         lfsr_c[0] = lfsr_q[8] ^ lfsr_q[9] ^ lfsr_q[10] ^ lfsr_q[11] ^ lfsr_q[12] ^ lfsr_q[13] ^ lfsr_q[14] ^ lfsr_q[15] ^ data_in[0] ^ data_in[1] ^ data_in[2] ^ data_in[3] ^ data_in[4] ^ data_in[5] ^ data_in[6] ^ data_in[7];
@@ -45,7 +48,7 @@ module usb_crc16
         if (~n_rst) begin
             lfsr_q <= {16{1'b1}};
         end else begin
-            lfsr_q <= crc_en ? lfsr_c : lfsr_q;
+            lfsr_q <= (crc_en && ~crc_valid) ? lfsr_c : lfsr_q;
         end
     end
 endmodule
