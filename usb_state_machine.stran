@@ -12,7 +12,8 @@
 # ** Note: (vopt-143) Recognized 1 FSM in module "usb_state_machine(fast)".
 # Loading sv_std.std
 # Loading work.tb_usb_state_machine(fast)
-run 10000ns
+add wave -r *
+run 2000ns
 # ** Info: Power on reset passed
 #    Time: 5560 ps  Scope: tb_usb_state_machine File: source/tb_usb_state_machine.sv Line: 67
 # ** Info: Test case  2 passed

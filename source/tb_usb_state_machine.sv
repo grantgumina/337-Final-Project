@@ -209,6 +209,11 @@ initial begin
                 $error("Tx test case %d (AA) failed", i);
         end
     end
+    @(posedge ulpi_clk)
+    assert(stp == 1'b1)
+        $info("End of transfer stp assertion passed");
+    else
+        $error("End of transfer stp assertion failed");
 end
 
 endmodule
