@@ -23,17 +23,17 @@ typedef enum bit [2:0] {
     st_check_crc,
     st_err,
     st_add_value,
-    st_prep_send,
+    st_wait_send,
     st_shift_out
 } stateType;
 
-wire crc_ready, crc_valid;
+wire crc_valid;
 reg [7:0] crc_data_in;
 reg [15:0] crc_out;
 reg add_value, crc_enable, shift_out;
 
-reg [6:0] count;
-reg [6:0] next_count;
+reg [8:0] count;
+reg [8:0] next_count;
 reg crc_invalid;
 reg [(16*4*8+2*8)-1:0] input_sr;
 reg [(16*4*8+2*8)-1:0] next_input_sr;
@@ -42,7 +42,7 @@ reg ar1, ar2, ar3, ar4, ar5, ar6, ar7, ar8, ar9, ar10, ar11, ar12, ar13, ar14, a
 reg average_ready;
 assign average_ready = ar1&&ar2&&ar3&&ar4&&ar5&&ar6&&ar7&&ar8&&ar9&&ar10&&ar11&&ar12&&ar13&&ar14&&ar15&&ar16;
 
-usb_crc16 CRC_CHECKER (n_rst, clk, crc_data_in, crc_enable, crc_out, crc_ready, crc_valid);
+usb_crc16 CRC_CHECKER (n_rst, clk, crc_data_in, crc_enable, crc_valid);
 
 average AVERAGER_1 (clk, n_rst, add_value, input_sr[47:16], ar1, usb_data_out[47:16]);
 average AVERAGER_2 (clk, n_rst, add_value, input_sr[79:48], ar2, usb_data_out[79:48]);
@@ -73,7 +73,15 @@ begin: OUT_LOGIC
     next_input_sr <= input_sr;
     add_value <= 1'b0;
     crc_enable <= 1'b0;
+    shift_out <= 1'b0;
     case(current_state)
+        st_idle:
+            begin
+                if (new_byte) begin
+                    next_input_sr <= {input_sr[519:0], usb_data_in[7:0]};
+                end
+            end
+
         st_add_value:
             begin
                 add_value <= 1'b1;
@@ -81,10 +89,9 @@ begin: OUT_LOGIC
 
         st_shift_in:
             begin
-                next_input_sr <= {input_sr[519:8], 8'h00};
                 next_count <= count + 1;
                 if(count == 65) begin
-                    next_count <= 7'b0000000;
+                    next_count <= 9'b00000000;
                 end
             end
 
@@ -98,7 +105,7 @@ begin: OUT_LOGIC
                 crc_enable <= 1'b1;
                 next_count <= count + 1;
                 if (count == 100 || crc_valid) begin
-                    next_count <= 7'b0000000;
+                    next_count <= 9'b00000000;
                 end
             end
     endcase
@@ -115,8 +122,6 @@ begin: NEXT_LOGIC
                 next_state <= st_idle;
                 if (new_byte) begin
                     next_state <= st_shift_in;
-                end else if(average_ready) begin
-                    next_state <= st_shift_out;
                 end
             end
         
@@ -134,12 +139,23 @@ begin: NEXT_LOGIC
         st_check_crc:
             begin
                 next_state <= st_check_crc;
-                if (crc_ready) begin
-                    if (crc_valid) begin
-                        next_state <= st_add_value;
-                    end else begin
-                        next_state <= st_err;
-                    end
+                if (crc_valid) begin
+                    next_state <= st_add_value;
+                end else if (crc_invalid) begin
+                    next_state <= st_err;
+                end
+            end
+
+        st_add_value:
+            begin
+                next_state <= st_wait_send;
+            end
+
+        st_wait_send:
+            begin
+                next_state <= st_wait_send;
+                if (average_ready) begin
+                    next_state <= st_shift_out;
                 end
             end
     endcase
@@ -149,7 +165,7 @@ always_ff @ (posedge clk, negedge n_rst)
 begin : REG_LOGIC
   if (n_rst == 1'b0) begin
     current_state <= st_idle;
-    count <= 7'b0000000;
+    count <= 9'b000000000;
     input_sr <= '0;
   end else begin
     current_state <= next_state;

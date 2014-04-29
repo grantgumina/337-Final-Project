@@ -14,13 +14,13 @@ module usb_crc16
         input reg clk,
         input reg [7:0] data_in,
         input reg crc_en,
-        output reg [15:0] crc_out,
-        output reg crc_ready,
         output reg crc_valid
     );
 
     reg [15:0] lfsr_q;
     reg [15:0] lfsr_c = {16{1'b1}}; // because otherwise lfsr_c is metastable in source... no gate delays
+
+    reg [15:0] crc_out;
 
     assign crc_out = lfsr_q;
     assign crc_valid = (crc_out == 16'b0100000100111111);

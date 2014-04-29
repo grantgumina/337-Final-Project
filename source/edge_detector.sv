@@ -21,7 +21,11 @@ begin : SCL_FF1
   if (n_rst == 1'b0)
     scl_intermediate <= 1;
   else
-    scl_intermediate <= scl;
+    if (scl == 1'b0 || scl == 1'b1) begin
+        scl_intermediate <= scl;
+    end else begin
+        scl_intermediate <= scl_intermediate;
+    end
 end
 
 always_ff @(posedge clk, negedge n_rst)

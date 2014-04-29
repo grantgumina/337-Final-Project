@@ -19,13 +19,33 @@ module top
     output wire stp
 );
 
-reg shift_out, new_byte;
+wire shift_out, new_byte;
 
 reg [(16*4*8+2*8)-1:0] internal_data_into_usb;
 reg [7:0] internal_data_out_of_usb;
 
-usb_state_machine USB_STATE_MACHINE (n_rst, clk, shift_out, usb_in, internal_data_into_usb, nxt, dir, ulpi_clk, new_byte, usb_out, internal_data_out_of_usb, stp);
+usb_state_machine USB_STATE_MACHINE (
+    .n_rst(n_rst), 
+    .clk(clk), 
+    .shift_out(shift_out), 
+    .data_in(usb_in), 
+    .internal_data_in(internal_data_into_usb),
+    .nxt(nxt), 
+    .dir(dir), 
+    .ulpi_clk(ulpi_clk), 
+    .new_byte(new_byte), 
+    .data_out(usb_out), 
+    .internal_data_out(internal_data_out_of_usb), 
+    .stp(stp)
+ );
 
-glue GLUE (n_rst, clk, internal_data_out_of_usb, new_byte, internal_data_into_usb, shift_out);
+glue GLUE (
+    n_rst, 
+    clk, 
+    internal_data_out_of_usb, 
+    new_byte, 
+    internal_data_into_usb, 
+    shift_out
+);
 
 endmodule
