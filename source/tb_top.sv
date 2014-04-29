@@ -10,8 +10,8 @@
 
 module tb_top ();
 
-parameter CLK_PERIOD = 5.555555556;
-parameter ULPI_CLK_PERIOD = 16.6666667;
+parameter CLK_PERIOD = 10;
+parameter ULPI_CLK_PERIOD = 30.0;
 
 reg tb_n_rst, tb_clk;
 reg [7:0] tb_usb_in; 

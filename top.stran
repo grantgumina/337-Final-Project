@@ -22,6 +22,9 @@
 # Loading ieee.std_logic_arith(body)
 # Loading ieee.std_logic_unsigned(body)
 # Loading /home/ecegrid/a/ece337/Class0.5u/ECE337_IP/vsim.simple_scale_mem(scaleable_memory)#1
+run 200000ns
+restart
+# Loading sv_std.std
+# Loading work.tb_top(fast)
 add wave -r *
-run 1000000ns
-# Causality operation skipped due to absense of debug database file
+run 200000ns

@@ -368,7 +368,7 @@ elaborate $(MOD_NAME) -lib WORK -update                       										  		\n\
 uniquify                                                                                \n\
 # Step 2: Set design constraints                                                        \n\
 # Uncomment below to set timing, area, power, etc. constraints                          \n\
-# set_max_delay <delay> -from "<input>" -to "<output>"                                  \n\
+# set_max_delay 2.77 from "	" -to "<output>"                                  \n\
 # set_max_area <area>                                                                   \n\
 # set_max_total_power <power> mW                                                        \n\
 $(if $(and $(CLOCK_NAME), $(CLOCK_PERIOD)), create_clock "$(CLOCK_NAME)" -name "$(CLOCK_NAME)" -period $(CLOCK_PERIOD)) \n\
