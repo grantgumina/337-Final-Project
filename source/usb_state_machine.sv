@@ -73,10 +73,10 @@ begin: OUT_LOGIC
     st_send_data:
         begin
             next_index <= index;
-            data_out <= mega_shift[7:0];
+            data_out <= mega_shift[(16*4*8+2*8)-1:(16*4*8+2*8)-1-8];
             if (ulpi_clk_rising) begin
                 next_index <= index + 1;
-                next_mega_shift <= {8'h00, mega_shift[(16*4*8+2*8)-1:8]};
+                next_mega_shift <= {mega_shift[(16*4*8+2*8)-1-8:0], 8'h00};
             end
         end
 
@@ -104,7 +104,7 @@ begin: NEXT_LOGIC
           // Wait until dir goes high
           if (dir_rising) begin
             next_state <= st_turn_up;
-          end else if (shift_out && ulpi_clk_rising) begin
+          end else if (shift_out) begin
             next_state <= st_send_tx;
           end
         end
@@ -161,7 +161,10 @@ begin: NEXT_LOGIC
 
       st_send_tx:
         begin
-          next_state <= st_send_data;
+            next_state <= st_send_tx;
+            if(ulpi_clk_rising) begin
+              next_state <= st_send_data;
+            end
         end
 
       st_send_data:

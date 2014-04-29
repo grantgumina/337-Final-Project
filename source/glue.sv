@@ -14,7 +14,7 @@ module glue
     input wire new_byte,
     
     output reg [(16*4*8+2*8)-1:0] usb_data_out,
-    output wire usb_shift_out
+    output reg shift_out
 );
 
 typedef enum bit [2:0] {
@@ -30,7 +30,7 @@ typedef enum bit [2:0] {
 wire crc_valid;
 reg [7:0] crc_data_in;
 reg [15:0] crc_out;
-reg add_value, crc_enable, shift_out;
+reg add_value, crc_enable;
 
 reg [8:0] count;
 reg [8:0] next_count;

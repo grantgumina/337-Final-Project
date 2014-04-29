@@ -76,7 +76,2275 @@ initial begin
     @(posedge tb_ulpi_clk)
     @(posedge tb_ulpi_clk);
 
-    for (i=0; i<1000; i++) begin
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
+        @(posedge tb_ulpi_clk);
+    end
+    // Single number test data
+    tb_nxt = 1'b0;
+    tb_dir = 1'b0;
+    @(posedge tb_ulpi_clk)
+    #0.01
+    tb_dir = 1'b1;
+    @(posedge tb_ulpi_clk)
+    tb_usb_in = 8'b00010000;
+    @(posedge tb_ulpi_clk)
+    tb_nxt = 1'b1;
+    for (i=0; i<16; i++) begin
+        tb_usb_in = 8'h12;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h34;
+        @(posedge tb_ulpi_clk)
+        tb_usb_in = 8'h56;
+        @(posedge tb_ulpi_clk);
+        tb_usb_in = 8'h78;
+        @(posedge tb_ulpi_clk);
+    end
+    // crc hold
+    tb_usb_in = 8'hFF;
+    @(posedge tb_ulpi_clk)
+    // crc value
+    tb_usb_in = 8'b10000111;
+    @(posedge tb_ulpi_clk)
+
+    tb_dir = 1'b0;
+    tb_nxt = 1'b0;
+    @(posedge tb_ulpi_clk)
+    @(posedge tb_ulpi_clk);
+
+    for (i=0; i<200; i++) begin
         @(posedge tb_ulpi_clk);
     end
 end

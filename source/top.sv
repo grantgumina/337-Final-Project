@@ -19,7 +19,8 @@ module top
     output wire stp
 );
 
-wire shift_out, new_byte;
+reg new_byte;
+reg shift_out;
 
 reg [(16*4*8+2*8)-1:0] internal_data_into_usb;
 reg [7:0] internal_data_out_of_usb;
@@ -40,12 +41,12 @@ usb_state_machine USB_STATE_MACHINE (
  );
 
 glue GLUE (
-    n_rst, 
-    clk, 
-    internal_data_out_of_usb, 
-    new_byte, 
-    internal_data_into_usb, 
-    shift_out
+    .n_rst(n_rst), 
+    .clk(clk), 
+    .usb_data_in(internal_data_out_of_usb), 
+    .new_byte(new_byte), 
+    .usb_data_out(internal_data_into_usb), 
+    .shift_out(shift_out)
 );
 
 endmodule
