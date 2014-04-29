@@ -13,7 +13,7 @@ module glue
     input wire [7:0] usb_data_in,
     input wire new_byte,
     
-    output wire [(16*4*8+2*8)-1:0] usb_data_out,
+    output reg [(16*4*8+2*8)-1:0] usb_data_out,
     output wire usb_shift_out
 );
 
@@ -32,17 +32,36 @@ reg [7:0] crc_data_in;
 reg [15:0] crc_out;
 reg add_value, crc_enable, shift_out;
 
-usb_crc16 CRC_CHECKER (n_rst, clk, crc_data_in, crc_enable, crc_out, crc_ready, crc_valid);
-
-stateType current_state, next_state;
-
 reg [6:0] count;
 reg [6:0] next_count;
 reg crc_invalid;
 reg [(16*4*8+2*8)-1:0] input_sr;
 reg [(16*4*8+2*8)-1:0] next_input_sr;
 
+reg ar1, ar2, ar3, ar4, ar5, ar6, ar7, ar8, ar9, ar10, ar11, ar12, ar13, ar14, ar15, ar16;
 reg average_ready;
+assign average_ready = ar1&&ar2&&ar3&&ar4&&ar5&&ar6&&ar7&&ar8&&ar9&&ar10&&ar11&&ar12&&ar13&&ar14&&ar15&&ar16;
+
+usb_crc16 CRC_CHECKER (n_rst, clk, crc_data_in, crc_enable, crc_out, crc_ready, crc_valid);
+
+average AVERAGER_1 (clk, n_rst, add_value, input_sr[47:16], ar1, usb_data_out[47:16]);
+average AVERAGER_2 (clk, n_rst, add_value, input_sr[79:48], ar2, usb_data_out[79:48]);
+average AVERAGER_3 (clk, n_rst, add_value, input_sr[111:80], ar3, usb_data_out[111:80]);
+average AVERAGER_4 (clk, n_rst, add_value, input_sr[143:112], ar4, usb_data_out[143:112]);
+average AVERAGER_5 (clk, n_rst, add_value, input_sr[175:144], ar5, usb_data_out[175:144]);
+average AVERAGER_6 (clk, n_rst, add_value, input_sr[207:176], ar6, usb_data_out[207:176]);
+average AVERAGER_7 (clk, n_rst, add_value, input_sr[239:208], ar7, usb_data_out[239:208]);
+average AVERAGER_8 (clk, n_rst, add_value, input_sr[271:240], ar8, usb_data_out[271:240]);
+average AVERAGER_9 (clk, n_rst, add_value, input_sr[303:272], ar9, usb_data_out[303:272]);
+average AVERAGER_10 (clk, n_rst, add_value, input_sr[335:304], ar10, usb_data_out[335:304]);
+average AVERAGER_11 (clk, n_rst, add_value, input_sr[367:336], ar11, usb_data_out[367:336]);
+average AVERAGER_12 (clk, n_rst, add_value, input_sr[399:368], ar12, usb_data_out[399:368]);
+average AVERAGER_13 (clk, n_rst, add_value, input_sr[431:400], ar13, usb_data_out[431:400]);
+average AVERAGER_14 (clk, n_rst, add_value, input_sr[463:432], ar14, usb_data_out[463:432]);
+average AVERAGER_15 (clk, n_rst, add_value, input_sr[495:464], ar15, usb_data_out[495:464]);
+average AVERAGER_16 (clk, n_rst, add_value, input_sr[527:496], ar16, usb_data_out[527:496]);
+
+stateType current_state, next_state;
 
 assign crc_invalid = (count == 100);
 assign crc_data_in = input_sr[7:0];
