@@ -1,1 +1,1 @@
-This is some bullshit. 
+An ASIC designed to perform High Frequency Trading.
